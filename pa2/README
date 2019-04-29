@@ -1,0 +1,13 @@
+#Table of Contents
+#List.c - Contains are functions involed for List ADT
+#List.h - Interface for List.c and Lex.c
+#ListClient.c - Tests for List ADT functions
+#Lex.c - Used to sort inputs into alphabetical order and outputs it
+#Makefile
+#README
+#
+#
+#
+#
+#
+#
