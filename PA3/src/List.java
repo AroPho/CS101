@@ -226,16 +226,17 @@ public class List {
             cursor = null;
         }
     }
-    private String myString(Node H){
-        if( H==null ){
-            return "";
-        }else{
-            return (H.matrix+ " " +myString(H.next));
-        }
-    }
-
     public String toString(){
-        return myString(head);
+        String result = "";
+        Node current = head;
+        while(current != null){
+            result += current.matrix;
+            if(current.next != null){
+                result += " ";
+            }
+            current = current.next;
+        }
+        return result;
     }
 
     /*public List copy(){

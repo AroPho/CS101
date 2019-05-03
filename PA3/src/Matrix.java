@@ -67,6 +67,10 @@ public class Matrix {
         while(count <= 3){
             aent = (Point) a.get();
             bent = (Point) b.get();
+            while(bent.column < c){
+                b.moveNext();
+                bent = (Point) b.get();
+            }
             if(aent.column == count && bent.column == c){
                 sum = (aent.ent * bent.ent) + sum;
                 a.moveNext();
@@ -170,13 +174,11 @@ public class Matrix {
                         A.changeEntry(i, count, aent.ent + bent.ent);
                         a.moveNext();
                         b.moveNext();
-                    } else if (aent.column != count && bent.column != count) {
-                        a.moveNext();
-                        b.moveNext();
-                    } else if (aent.column == count) {
+                        count++;
+                    } else if(aent.column == count && bent.column > count){
                         A.changeEntry(i, count, aent.ent);
                         a.moveNext();
-                    } else {
+                    }else if(bent.column == count && aent.column > count){
                         A.changeEntry(i, count, bent.ent);
                         b.moveNext();
                     }
@@ -211,19 +213,19 @@ public class Matrix {
             Point aent = (Point) a.get();
             Point bent = (Point) b.get();
             int count = 1;
-            while(count <= size){
+            while (count <= size) {
                 if(a.index() != -1 && b.index() != -1) {
+                    aent = (Point) a.get();
+                    bent = (Point) b.get();
                     if (aent.equals(bent) && aent.column == count) {
                         A.changeEntry(i, count, aent.ent - bent.ent);
                         a.moveNext();
                         b.moveNext();
-                    } else if (aent.column != count && bent.column != count) {
-                        a.moveNext();
-                        b.moveNext();
-                    } else if (aent.column == count) {
+                        count++;
+                    } else if(aent.column == count && bent.column > count){
                         A.changeEntry(i, count, aent.ent);
                         a.moveNext();
-                    } else {
+                    }else if(bent.column == count && aent.column > count){
                         A.changeEntry(i, count, -bent.ent);
                         b.moveNext();
                     }
@@ -249,20 +251,42 @@ public class Matrix {
     // returns a new Matrix that is the difference of this Matrix with M
     // pre: getSize()==M.getSize()
     Matrix transpose(){
-        return this;
+        Matrix temp = new Matrix(size);
+        for(int x  = 0; x < size; x++){
+            List a = this.matrix[x];
+            a.moveFront();
+            while(a.index() != -1){
+                Point ent = (Point) a.get();
+                temp.changeEntry(ent.column, x, ent.ent);
+            }
+        }
+        return temp;
     }
     // returns a new Matrix that is the transpose of this Matrix
 
     Matrix mult(Matrix M){
-        return this;
+        if(getSize() != M.getSize()){
+            return null;
+        }
+        Matrix A = new Matrix(size);
+        for(int y = 0; y < size; y++){
+            for(int x = 0; x < size;x++){
+                A.changeEntry(y,x,dot(this, M, y, x));
+            }
+        }
+        return A;
     }
     // returns a new Matrix that is the product of this Matrix with M
     // pre: getSize()==M.getSize()
 
     // Other functions
-    public String toString(){
-        return "fuck";
-    } // overrides Object's toString() method
+    private String toString(Point H){
+        if( H==null ){
+            return "";
+        }else{
+            return ("(" + H.column + ", " + H.ent + ") ");
+        }
+    }// overrides Object's toString() method
 
 
 
