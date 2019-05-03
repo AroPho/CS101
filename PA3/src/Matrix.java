@@ -56,9 +56,8 @@ public class Matrix {
         return false;
     } // overrides Object's equals() method
 
-    public int dot(Matrix A, Matrix B, int r, int c){
-        double[] product = new double[size];
-        int sum;
+    public double dot(Matrix A, Matrix B, int r, int c){
+        double sum = 0;
         Point aent, bent;
         List a = A.matrix[r];
         List b = B.matrix[0];
@@ -69,15 +68,16 @@ public class Matrix {
             aent = (Point) a.get();
             bent = (Point) b.get();
             if(aent.column == count && bent.column == c){
-                product[count - 1] = aent.ent * bent.ent;
-                count++;
+                sum = (aent.ent * bent.ent) + sum;
                 a.moveNext();
+                b = B.matrix[count-1];
+                b.moveFront();
+                count++;
+            }else{
+                count++;
             }
-
-
         }
-
-
+        return sum;
     }
 
     // Manipulation procedures
