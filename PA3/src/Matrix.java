@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.io.*;
 
 
@@ -11,22 +12,18 @@ public class Matrix {
             column = c;
             ent = x;
         }
-        public boolean equals(Point e){
-            if( column != e.column){
-                return false;
-            }else{
-                return true;
-                /*if(ent == e.ent) {
+        public boolean equals(Object x){
+            Point e;
+            if(x instanceof Point) {
+                e = (Point) x;
+                if (column == e.column && ent == e.ent) {
                     return true;
-                }return false;*/
+                }
             }
+            return false;
         }
-        private String toString(Point e){
-            if( e==null ){
-                return "";
-            }else{
-                return ("(" + e.column + ", " + e.ent + ")");
-            }
+        public String toString(){
+            return ("(" + column + ", " + ent + ")");
         }
 
     }
@@ -38,9 +35,12 @@ public class Matrix {
     // Constructor
     Matrix(int n){ // Makes a new n x n zero Matrix. pre: n>=1
         if(n > 0) {
-            List[] matrix = new List[n];
             size = n;
             nonzeros = 0;
+            matrix = new List[n];
+            for(int x = 0; x < n;x++){
+                matrix[x] = new List();
+            }
         }
     }
 
@@ -52,36 +52,43 @@ public class Matrix {
         return nonzeros;
     }
 
-    public boolean equals(Object x){
-        return false;
+    public boolean equals(Object x) {
+        Matrix temp;
+        if(x instanceof Matrix) {
+            temp = (Matrix) x;
+            //System.out.println(temp);
+            if(getSize() != temp.getSize()) {
+                return false;
+            }
+            for(int i = 0; i < getSize(); i++) {
+                if(!(matrix[i].equals(temp.matrix[i]))){
+                    return false;
+                }
+            }
+
+        }
+        return true;
     } // overrides Object's equals() method
 
-    public double dot(Matrix A, Matrix B, int r, int c){
-        double sum = 0;
-        Point aent, bent;
-        List a = A.matrix[r];
-        List b = B.matrix[0];
-        a.moveFront();
-        b.moveFront();
-        int count = 1;
-        while(count <= 3){
-            aent = (Point) a.get();
-            bent = (Point) b.get();
-            while(bent.column < c){
-                b.moveNext();
-                bent = (Point) b.get();
-            }
-            if(aent.column == count && bent.column == c){
-                sum = (aent.ent * bent.ent) + sum;
-                a.moveNext();
-                b = B.matrix[count-1];
-                b.moveFront();
-                count++;
-            }else{
-                count++;
+    public double dot(List A, List B) {
+        double product = 0.0;
+        A.moveFront();
+        B.moveFront();
+        while(A.index() != -1 && B.index() != -1)
+        {
+            Point ent1 = (Point) A.get();
+            Point ent2 = (Point) B.get();
+            if(ent1.column > ent2.column) {
+                B.moveNext();
+            }else if(ent1.column < ent2.column) {
+                A.moveNext();
+            }else {
+                product += (ent1.ent * ent2.ent);
+                A.moveNext();
+                B.moveNext();
             }
         }
-        return sum;
+        return product;
     }
 
     // Manipulation procedures
@@ -90,6 +97,7 @@ public class Matrix {
         for(int x = 0; x < size; x++){
             matrix[x].clear();
         }
+        nonzeros = 0;
     } // sets this Matrix to the zero state
 
     Matrix copy(){
@@ -98,7 +106,7 @@ public class Matrix {
             matrix[x].moveFront();
             while(matrix[x].index() != -1){
                 Point temp = (Point) matrix[x].get();
-                A.changeEntry(x, temp.column, temp.ent);
+                A.changeEntry(x+1, temp.column, temp.ent);
                 matrix[x].moveNext();
             }
         }
@@ -107,32 +115,37 @@ public class Matrix {
 
     void changeEntry(int i, int j, double x){
         Point temp = new Point(j, x);
-        if(matrix[i].length() == 0 && x != 0){
-            matrix[i].append(temp);
+        Point current;
+        //System.out.println(i);
+        List list = matrix[i-1];
+        if(list.length() == 0 && temp.ent != 0){
+            list.append(temp);
             nonzeros++;
         }else {
-            matrix[i].moveFront();
-            while (matrix[i].index() < i) {
-                matrix[i].moveNext();
-            }
-            if (matrix[i].index() == -1) {
-                matrix[i].prepend(temp);
-                nonzeros++;
-            }else if(matrix[i].index() == i){
-                if(x == 0){
-                    matrix[i].delete();
-                    nonzeros--;
-                }else if(matrix[i].get() == temp){
-                    return;
-                }else{
-                    matrix[i].insertAfter(temp);
-                    matrix[i].delete();
+            list.moveFront();
+            current = (Point) list.get();
+            while(/*current.column < j && */list.index() != -1){
+                //System.out.print(list.index());
+                list.moveNext();
+                current = (Point) list.get();
+            }if(list.index() == -1){
+                if(temp.ent != 0){
+                    list.append(temp);
                     nonzeros++;
                 }
-            }else{
-                if(x != 0) {
-                    matrix[i].insertBefore(temp);
+            }else if(current.column > j){
+                if(temp.ent != 0){
+                    list.insertBefore(temp);
                     nonzeros++;
+                }
+            }else if(current.ent == temp.ent){
+                if(temp.ent != 0){
+                    list.insertBefore(temp);
+                    list.delete();
+
+                }else{
+                    list.delete();
+                    nonzeros--;
                 }
             }
         }
@@ -142,13 +155,13 @@ public class Matrix {
 
     Matrix scalarMult(double x){
         Matrix A = new Matrix(size);
-        for(int i = 0; i < size;i++){
-            List Ltemp = A.matrix[i];
+        for(int i = 1; i <= size;i++){
+            List Ltemp = matrix[i-1];
             Point temp;
             Ltemp.moveFront();
             while(Ltemp.get() != null){
                 temp = (Point) Ltemp.get();
-                changeEntry(i, temp.column, temp.ent * x );
+                A.changeEntry(i, temp.column, (temp.ent * x) );
                 Ltemp.moveNext();
             }
         }
@@ -159,39 +172,49 @@ public class Matrix {
 
     Matrix add(Matrix M) {
         Matrix A = new Matrix(size);
-        for (int i = 0; i < size; i++) {
-            List a = matrix[i];
-            List b = M.matrix[i];
+        Point aent, bent;
+        if(this == M){
+            A = this.scalarMult(2);
+            return A;
+        }
+        for (int i = 1; i <= size; i++) {
+            List a = this.matrix[i-1];
+            List b = M.matrix[i-1];
             a.moveFront();
             b.moveFront();
-            Point aent, bent;
             int count = 1;
-            while (count <= size) {
-                if(a.index() != -1 && b.index() != -1) {
+            while(count <= size){
+                if(a.length() > 0 && b.length() == 0){
+                    if(a.index() != -1) {
+                        aent = (Point) a.get();
+                        A.changeEntry(i, aent.column, aent.ent);
+                        a.moveNext();
+                    }
+                }else if(b.length() > 0 && a.length() == 0){
+                    if(b.index() != -1) {
+                        bent = (Point) b.get();
+                        A.changeEntry(i, bent.column, bent.ent);
+                        b.moveNext();
+                    }
+                }else{
                     aent = (Point) a.get();
                     bent = (Point) b.get();
-                    if (aent.equals(bent) && aent.column == count) {
-                        A.changeEntry(i, count, aent.ent + bent.ent);
+                    //System.out.println(this);
+                    //System.out.println(a.get());
+                    if(aent.column == bent.column){
+                        if(aent.column == count) {
+                            A.changeEntry(i, aent.column, (aent.ent + bent.column));
+                            a.moveNext();
+                            b.moveNext();
+                        }else{
+                            a.moveNext();
+                            b.moveNext();
+                        }
+                    }else if(aent.ent == count && bent.ent != count){
+                        A.changeEntry(i,count, aent.ent);
                         a.moveNext();
-                        b.moveNext();
-                        count++;
-                    } else if(aent.column == count && bent.column > count){
-                        A.changeEntry(i, count, aent.ent);
-                        a.moveNext();
-                    }else if(bent.column == count && aent.column > count){
-                        A.changeEntry(i, count, bent.ent);
-                        b.moveNext();
-                    }
-                }else if(a.index() != -1 && b.index() == -1){
-                    aent = (Point) a.get();
-                    if(aent.column == count) {
-                        A.changeEntry(i, count, aent.ent);
-                        a.moveNext();
-                    }
-                }else if(b.index() != -1 && a.index() == -1){
-                    bent = (Point) a.get();
-                    if(bent.column == count) {
-                        A.changeEntry(i, count, bent.ent);
+                    }else if(bent.ent == count && aent.ent != count){
+                        A.changeEntry(i,count, bent.ent);
                         b.moveNext();
                     }
                 }
@@ -205,40 +228,48 @@ public class Matrix {
 
     Matrix sub(Matrix M){
         Matrix A = new Matrix(size);
-        for(int i = 0; i < size;i++){
-            List a = matrix[i];
-            List b = M.matrix[i];
+        Point aent, bent;
+        if(this == M){
+            return A;
+        }
+        for (int i = 1; i <= size; i++) {
+            List a = this.matrix[i-1];
+            List b = M.matrix[i-1];
             a.moveFront();
             b.moveFront();
-            Point aent = (Point) a.get();
-            Point bent = (Point) b.get();
             int count = 1;
-            while (count <= size) {
-                if(a.index() != -1 && b.index() != -1) {
+            while(count <= size){
+                if(a.length() > 0 && b.length() == 0){
+                    if(a.index() != -1) {
+                        aent = (Point) a.get();
+                        A.changeEntry(i, aent.column, aent.ent);
+                        a.moveNext();
+                    }
+                }else if(b.length() > 0 && a.length() == 0){
+                    if(b.index() != -1) {
+                        bent = (Point) b.get();
+                        A.changeEntry(i, bent.column, -bent.ent);
+                        b.moveNext();
+                    }
+                }else{
                     aent = (Point) a.get();
                     bent = (Point) b.get();
-                    if (aent.equals(bent) && aent.column == count) {
-                        A.changeEntry(i, count, aent.ent - bent.ent);
+                    //System.out.println(this);
+                    //System.out.println(a.get());
+                    if(aent.column == bent.column){
+                        if(aent.column == count) {
+                            A.changeEntry(i, aent.column, (aent.ent - bent.column));
+                            a.moveNext();
+                            b.moveNext();
+                        }else{
+                            a.moveNext();
+                            b.moveNext();
+                        }
+                    }else if(aent.ent == count && bent.ent != count){
+                        A.changeEntry(i,count, aent.ent);
                         a.moveNext();
-                        b.moveNext();
-                        count++;
-                    } else if(aent.column == count && bent.column > count){
-                        A.changeEntry(i, count, aent.ent);
-                        a.moveNext();
-                    }else if(bent.column == count && aent.column > count){
-                        A.changeEntry(i, count, -bent.ent);
-                        b.moveNext();
-                    }
-                }else if(a.index() != -1 && b.index() == -1){
-                    aent = (Point) a.get();
-                    if(aent.column == count) {
-                        A.changeEntry(i, count, aent.ent);
-                        a.moveNext();
-                    }
-                }else if(b.index() != -1 && a.index() == -1){
-                    bent = (Point) a.get();
-                    if(bent.column == count) {
-                        A.changeEntry(i, count, -bent.ent);
+                    }else if(bent.ent == count && aent.ent != count){
+                        A.changeEntry(i,count, -bent.ent);
                         b.moveNext();
                     }
                 }
@@ -257,7 +288,8 @@ public class Matrix {
             a.moveFront();
             while(a.index() != -1){
                 Point ent = (Point) a.get();
-                temp.changeEntry(ent.column, x, ent.ent);
+                temp.changeEntry(ent.column, x+1, ent.ent);
+                a.moveNext();
             }
         }
         return temp;
@@ -268,10 +300,16 @@ public class Matrix {
         if(getSize() != M.getSize()){
             return null;
         }
+        Matrix temp = M.transpose();
+        //System.out.println(this);
+        //System.out.println(temp);
         Matrix A = new Matrix(size);
-        for(int y = 0; y < size; y++){
-            for(int x = 0; x < size;x++){
-                A.changeEntry(y,x,dot(this, M, y, x));
+        for(int y = 1; y <= size; y++){
+            for(int x = 1; x <= size;x++){
+                //System.out.println("(" + x +", " + y +")");
+                if(this.matrix[y-1].length()!= 0 && temp.matrix[x-1].length() != 0) {
+                    A.changeEntry(y, x, dot(this.matrix[y - 1], temp.matrix[x - 1]));
+                }
             }
         }
         return A;
@@ -280,16 +318,71 @@ public class Matrix {
     // pre: getSize()==M.getSize()
 
     // Other functions
-    private String toString(Point H){
-        if( H==null ){
-            return "";
-        }else{
-            return ("(" + H.column + ", " + H.ent + ") ");
+    public String toString(){
+        String out = "";
+        int count = 0;
+        for(int i = 0; i < size; i++){
+            if(matrix[i].length() != 0){
+                out += ((i+1) + ": " + matrix[i] + "\n");
+            }
         }
+        return out;
     }// overrides Object's toString() method
 
+    public static void main(String[] args){
+        int i, j, n=3;
+        Matrix A = new Matrix(n);
+        Matrix B = new Matrix(n);
+
+        A.changeEntry(1,1,1); B.changeEntry(1,1,1);
+        A.changeEntry(1,2,2); B.changeEntry(1,2,0);
+        A.changeEntry(1,3,3); B.changeEntry(1,3,1);
+        A.changeEntry(2,1,4); B.changeEntry(2,1,0);
+        A.changeEntry(2,2,5); B.changeEntry(2,2,1);
+        A.changeEntry(2,3,6); B.changeEntry(2,3,0);
+        A.changeEntry(3,1,7); B.changeEntry(3,1,1);
+        A.changeEntry(3,2,8); B.changeEntry(3,2,1);
+        A.changeEntry(3,3,9); B.changeEntry(3,3,1);
+
+        System.out.println(A.getNNZ());
+        System.out.println(A);
+
+        System.out.println(B.getNNZ());
+        System.out.println(B);
+
+        /*Matrix C = A.scalarMult(1.5);
+        System.out.println(C.getNNZ());
+        System.out.println(C);
 
 
+        Matrix D = A.add(A);
+        System.out.println(D.getNNZ());
+        System.out.println(D);
 
+        Matrix E = A.sub(A);
+        System.out.println(E.getNNZ());
+        System.out.println(E);
 
+        Matrix F = B.transpose();
+        System.out.println(F.getNNZ());
+        System.out.println(F);
+
+        Matrix G = B.mult(B);
+        System.out.println(G.getNNZ());
+        System.out.println(G);*/
+
+        Matrix H = A.copy();
+        /*System.out.println(H.getNNZ());
+        System.out.println(H);
+        System.out.println(A.equals(H));
+        System.out.println(A.equals(B));
+        System.out.println(A.equals(A));
+
+        A.makeZero();
+        System.out.println(A.getNNZ());
+        System.out.println(A);*/
+
+        System.out.println(A.matrix[0] + " " + H.matrix[0]);
+        System.out.println(A.matrix[0].equals(H.matrix[0]));
+    }
 }

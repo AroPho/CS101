@@ -4,8 +4,7 @@ import java.util.Scanner;
 public class Sparse {
     public static void main(String[] args) throws IOException {
         Scanner in = null;
-        PrintWriter rpt = new PrintWriter(new FileWriter(args[0] + ".rpt"));
-        PrintWriter trc = new PrintWriter(new FileWriter(args[0] + ".trc"));
+        PrintWriter  out = new PrintWriter(new FileWriter(args[1]));
         String line;
         int size, a, b, i, j;
         double entry;
@@ -43,5 +42,42 @@ public class Sparse {
             B.changeEntry(i, j, entry);
             count++;
         }
+
+        out.println("A has " + A.getNNZ() + " non-zero entries:");
+        out.println(A);
+        out.println("B has " + B.getNNZ() + " non-zero entries:");
+        out.println(B);
+        out.println("(1.5)*A =");
+        Matrix C = A.scalarMult(1.5);
+        out.println(C);
+
+
+        Matrix D = A.add(B);
+        out.println("A+B =");
+        out.println(D);
+        D = A.add(A);
+        out.println("A+A =");
+        out.println(D);
+
+        Matrix E = B.sub(A);
+        out.println("B-A =");
+        out.println(E);
+        E = A.sub(A);
+        out.println("A-A =");
+        out.println(E);
+
+        Matrix F = A.transpose();
+        out.println("Transpose(A) =");
+        out.println(F);
+
+        Matrix G = A.mult(B);
+        out.println("A*B =");
+        out.println(G);
+        G = B.mult(B);
+        out.println("B*B =");
+        out.println(G);
+
+        in.close();
+        out.close();
     }
 }
