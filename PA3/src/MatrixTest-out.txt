@@ -1,0 +1,18 @@
+
+List of tests passed/failed:
+
+Empty_getSize PASSED
+
+Unfortunately your program crashed on test NonEmpty_getSize With an exception of:
+
+java.lang.NullPointerException
+	at Matrix.changeEntry(Matrix.java:110)
+	at ModelMatrixTest.runTest(ModelMatrixTest.java:63)
+	at ModelMatrixTest.main(ModelMatrixTest.java:318)
+
+NonEmpty_getSize FAILED: due to exception
+
+Charity points because you had an exception
+
+This gives you a score of 0 out of 60 for MatrixTest
+
