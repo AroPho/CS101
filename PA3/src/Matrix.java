@@ -211,10 +211,10 @@ public class Matrix {
                             a.moveNext();
                             b.moveNext();
                         }
-                    }else if(aent.ent == count && bent.ent != count){
+                    }else if(aent.column == count && bent.column != count){
                         A.changeEntry(i,count, aent.ent);
                         a.moveNext();
-                    }else if(bent.ent == count && aent.ent != count){
+                    }else if(bent.column == count && aent.column != count){
                         A.changeEntry(i,count, bent.ent);
                         b.moveNext();
                     }
@@ -263,10 +263,10 @@ public class Matrix {
                             a.moveNext();
                             b.moveNext();
                         }
-                    }else if(aent.ent == count && bent.ent != count){
+                    }else if(aent.column == count && bent.column != count){
                         A.changeEntry(i,count, aent.ent);
                         a.moveNext();
-                    }else if(bent.ent == count && aent.ent != count){
+                    }else if(bent.column == count && aent.column != count){
                         A.changeEntry(i,count, -bent.ent);
                         b.moveNext();
                     }

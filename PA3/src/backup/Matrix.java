@@ -211,10 +211,10 @@ public class Matrix {
                             a.moveNext();
                             b.moveNext();
                         }
-                    }else if(aent.ent == count && bent.ent != count){
+                    }else if(aent.column == count && bent.column != count){
                         A.changeEntry(i,count, aent.ent);
                         a.moveNext();
-                    }else if(bent.ent == count && aent.ent != count){
+                    }else if(bent.column == count && aent.column != count){
                         A.changeEntry(i,count, bent.ent);
                         b.moveNext();
                     }
@@ -230,9 +230,6 @@ public class Matrix {
     Matrix sub(Matrix M){
         Matrix A = new Matrix(size);
         Point aent, bent;
-        if(this == M){
-            return A;
-        }
         for (int i = 1; i <= size; i++) {
             List a = this.matrix[i-1];
             List b = M.matrix[i-1];
@@ -241,14 +238,14 @@ public class Matrix {
             int count = 1;
             while(count <= size){
                 if(a.index() != -1 && b.index() == -1){
-                  aent = (Point) a.get();  
-                  if(aent.column == count) {
+                    aent = (Point) a.get();
+                    if(aent.column == count){
                         A.changeEntry(i, aent.column, aent.ent);
                         a.moveNext();
                     }
                 }else if(b.index() != -1 && a.index() == -1){
                     bent = (Point) b.get();
-                    if(bent.column == count) {
+                    if(bent.column == count){
                         A.changeEntry(i, bent.column, -bent.ent);
                         b.moveNext();
                     }
@@ -266,10 +263,10 @@ public class Matrix {
                             a.moveNext();
                             b.moveNext();
                         }
-                    }else if(aent.ent == count && bent.ent != count){
+                    }else if(aent.column == count && bent.column != count){
                         A.changeEntry(i,count, aent.ent);
                         a.moveNext();
-                    }else if(bent.ent == count && aent.ent != count){
+                    }else if(bent.column == count && aent.column != count){
                         A.changeEntry(i,count, -bent.ent);
                         b.moveNext();
                     }
