@@ -21,7 +21,7 @@ public class List {
     private int numItems;
 
     public List(){
-        head = tail = cursor =null;
+        head = tail = cursor = null;
         cursorInd = -1;
         numItems = 0;
     }
@@ -54,18 +54,23 @@ public class List {
         if(numItems > 0 && cursorInd >= 0 && cursorInd < numItems ) {
             return cursor.matrix;
         }else{
-            return -1;
+            return null;
         }
     }
 
     public boolean equals(List L){
-        if(numItems != L.numItems){
+        //System.out.println(L);
+        //System.out.println(this);
+        if(this.numItems != L.numItems){
+            //System.out.println("why");
             return false;
         }else{
             Node temp = head;
             Node tempL = L.head;
-            for(int x = 0; x < numItems; x++){
-                if(temp.matrix != tempL.matrix){
+            for(int x = 0; x < this.numItems; x++){
+                if(!(temp.matrix.equals(tempL.matrix))){
+                    //System.out.println(temp.matrix);
+                    //System.out.println(tempL.matrix);
                     return false;
                 }else{
                     temp = temp.next;
@@ -181,6 +186,11 @@ public class List {
     }
 
     public void deleteFront(){
+      if(numItems == 1){
+        head = tail = cursor = null;
+        cursorInd = -1;
+        numItems--;
+      }
         if(numItems != 0){
             head = head.next;
             head.prev = null;
@@ -230,7 +240,7 @@ public class List {
         String result = "";
         Node current = head;
         while(current != null){
-            result += current.matrix;
+            result = result + current.matrix;
             if(current.next != null){
                 result += " ";
             }

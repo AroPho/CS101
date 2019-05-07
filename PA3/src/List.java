@@ -69,8 +69,8 @@ public class List {
             Node tempL = L.head;
             for(int x = 0; x < this.numItems; x++){
                 if(!(temp.matrix.equals(tempL.matrix))){
-                    System.out.println(temp.matrix);
-                    System.out.println(tempL.matrix);
+                    //System.out.println(temp.matrix);
+                    //System.out.println(tempL.matrix);
                     return false;
                 }else{
                     temp = temp.next;
@@ -186,6 +186,11 @@ public class List {
     }
 
     public void deleteFront(){
+      if(numItems == 1){
+        head = tail = cursor = null;
+        cursorInd = -1;
+        numItems--;
+      }
         if(numItems != 0){
             head = head.next;
             head.prev = null;

@@ -24,6 +24,7 @@ public class Sparse {
         Matrix A = new Matrix(size);
         Matrix B = new Matrix(size);
         int count = 0;
+        in.nextLine().trim();
         while(count < a && in.hasNextLine()){
             line = in.nextLine().trim();
             s = line.split(" ");
@@ -33,6 +34,7 @@ public class Sparse {
             A.changeEntry(i, j, entry);
             count++;
         }count = 0;
+        in.nextLine().trim();
         while(count < b && in.hasNextLine()){
             line = in.nextLine().trim();
             s = line.split(" ");

@@ -124,7 +124,7 @@ public class Matrix {
         }else {
             list.moveFront();
             current = (Point) list.get();
-            while(/*current.column < j && */list.index() != -1){
+            while(list.index() != -1 && current.column < j){
                 //System.out.print(list.index());
                 list.moveNext();
                 current = (Point) list.get();
@@ -138,12 +138,13 @@ public class Matrix {
                     list.insertBefore(temp);
                     nonzeros++;
                 }
-            }else if(current.ent == temp.ent){
+            }else if(current.column == temp.column){
                 if(temp.ent != 0){
                     list.insertBefore(temp);
                     list.delete();
 
                 }else{
+                    //System.out.println(list);
                     list.delete();
                     nonzeros--;
                 }
@@ -184,18 +185,18 @@ public class Matrix {
             b.moveFront();
             int count = 1;
             while(count <= size){
-                if(a.length() > 0 && b.length() == 0){
-                    if(a.index() != -1) {
+                if(a.index() != -1 && b.index() == -1){
                         aent = (Point) a.get();
+                        if(aent.column == count){
                         A.changeEntry(i, aent.column, aent.ent);
                         a.moveNext();
-                    }
-                }else if(b.length() > 0 && a.length() == 0){
-                    if(b.index() != -1) {
+                        }
+                }else if(b.index() != -1 && a.index() == -1){
                         bent = (Point) b.get();
+                        if(bent.column == count){
                         A.changeEntry(i, bent.column, bent.ent);
                         b.moveNext();
-                    }
+                        }
                 }else{
                     aent = (Point) a.get();
                     bent = (Point) b.get();
@@ -239,15 +240,15 @@ public class Matrix {
             b.moveFront();
             int count = 1;
             while(count <= size){
-                if(a.length() > 0 && b.length() == 0){
-                    if(a.index() != -1) {
-                        aent = (Point) a.get();
+                if(a.index() != -1 && b.index() == -1){
+                  aent = (Point) a.get();  
+                  if(aent.column == count) {
                         A.changeEntry(i, aent.column, aent.ent);
                         a.moveNext();
                     }
-                }else if(b.length() > 0 && a.length() == 0){
-                    if(b.index() != -1) {
-                        bent = (Point) b.get();
+                }else if(b.index() != -1 && a.index() == -1){
+                    bent = (Point) b.get();
+                    if(bent.column == count) {
                         A.changeEntry(i, bent.column, -bent.ent);
                         b.moveNext();
                     }

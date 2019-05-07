@@ -2,15 +2,21 @@
 List of tests passed/failed:
 
 Empty_getSize PASSED
+NonEmpty_getSize PASSED
+Empty_getNNZ PASSED
+makeZero_getNNZ PASSED
+changeEntry_getNNZ PASSED
+copy_getNNZ PASSED
+transpose_getNNZ PASSED
 
-Unfortunately your program crashed on test NonEmpty_getSize With an exception of:
+Unfortunately your program crashed on test add_getNNZ With an exception of:
 
 java.lang.NullPointerException
-	at Matrix.changeEntry(Matrix.java:110)
-	at ModelMatrixTest.runTest(ModelMatrixTest.java:63)
+	at Matrix.add(Matrix.java:205)
+	at ModelMatrixTest.runTest(ModelMatrixTest.java:149)
 	at ModelMatrixTest.main(ModelMatrixTest.java:318)
 
-NonEmpty_getSize FAILED: due to exception
+add_getNNZ FAILED: due to exception
 
 Charity points because you had an exception
 
