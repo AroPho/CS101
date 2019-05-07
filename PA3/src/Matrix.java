@@ -197,7 +197,7 @@ public class Matrix {
                         A.changeEntry(i, bent.column, bent.ent);
                         b.moveNext();
                         }
-                }else{
+                }else if(a.index() != -1 && b.index() != -1){
                     aent = (Point) a.get();
                     bent = (Point) b.get();
                     //System.out.println(this);
