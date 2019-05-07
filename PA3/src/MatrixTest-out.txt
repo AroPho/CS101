@@ -8,17 +8,16 @@ makeZero_getNNZ PASSED
 changeEntry_getNNZ PASSED
 copy_getNNZ PASSED
 transpose_getNNZ PASSED
+add_getNNZ PASSED
+sub_getNNZ FAILED: in test 2
+scalarMult_getNNZ PASSED
+mult_getNNZ PASSED
+Empty_equals PASSED
+NonEmpty_equals PASSED
+Empty_toString PASSED
+NonEmpty_toString PASSED
 
-Unfortunately your program crashed on test add_getNNZ With an exception of:
+Passed 14 tests out of 15 possible
 
-java.lang.NullPointerException
-	at Matrix.add(Matrix.java:205)
-	at ModelMatrixTest.runTest(ModelMatrixTest.java:149)
-	at ModelMatrixTest.main(ModelMatrixTest.java:318)
-
-add_getNNZ FAILED: due to exception
-
-Charity points because you had an exception
-
-This gives you a score of 0 out of 60 for MatrixTest
+This gives you a score of 56 out of 60 for MatrixTest
 

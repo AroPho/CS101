@@ -197,14 +197,14 @@ public class Matrix {
                         A.changeEntry(i, bent.column, bent.ent);
                         b.moveNext();
                         }
-                }else{
+                }else if(a.index() != -1 && b.index() != -1){
                     aent = (Point) a.get();
                     bent = (Point) b.get();
                     //System.out.println(this);
                     //System.out.println(a.get());
                     if(aent.column == bent.column){
                         if(aent.column == count) {
-                            A.changeEntry(i, aent.column, (aent.ent + bent.column));
+                            A.changeEntry(i, aent.column, (aent.ent + bent.ent));
                             a.moveNext();
                             b.moveNext();
                         }else{
@@ -252,14 +252,14 @@ public class Matrix {
                         A.changeEntry(i, bent.column, -bent.ent);
                         b.moveNext();
                     }
-                }else{
+                }else if(a.index() != -1 && b.index() != -1){
                     aent = (Point) a.get();
                     bent = (Point) b.get();
                     //System.out.println(this);
                     //System.out.println(a.get());
                     if(aent.column == bent.column){
                         if(aent.column == count) {
-                            A.changeEntry(i, aent.column, (aent.ent - bent.column));
+                            A.changeEntry(i, aent.column, (aent.ent - bent.ent));
                             a.moveNext();
                             b.moveNext();
                         }else{
