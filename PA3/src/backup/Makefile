@@ -25,3 +25,6 @@ $(JARFILE): $(CLASSES)
 
 clean:
 	rm -f *.class $(JARFILE)
+
+submit: Sparse.java Matrix.java List.java MatrixTest.java ListTest.java Makefile README	
+	submit cmps101-pt.s19 pa3 Sparse.java Matrix.java List.java MatrixTest.java ListTest.java Makefile README
