@@ -163,6 +163,7 @@ void addArc(Graph G, int u, int v){
         List A = G->neighbors[u];
         *//*if(A != NULL && length(A) == 0){
             prepend(A, v);
+
         }else {*//*
             moveFront(A);
             while (index(A) != -1) {
@@ -213,11 +214,11 @@ void BFS(Graph G, int s){
             if(length(adj) != 0) {
                 moveFront(adj);
                 while (index(adj) != -1) {
-                    if (G->color[index(adj)] == WHITE) {
-                        append(Q, index(adj));
-                        G->parent[index(adj)] = current;
-                        G->color[index(adj)] = GRAY;
-                        G->distance[index(adj)] = G->distance[current] + 1;
+                    if (G->color[get(adj)] == WHITE) {
+                        append(Q, get(adj));
+                        G->parent[get(adj)] = current;
+                        G->color[get(adj)] = GRAY;
+                        G->distance[get(adj)] = G->distance[current] + 1;
                     }
                     moveNext(adj);
                 }
