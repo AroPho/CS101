@@ -312,7 +312,7 @@ int dequeue(List L){
   if(L != NULL){
     moveFront(L);
     int x = get(L);
-    deleteFront(L);
+    delete(L);
     return x;
   }
   return -1;
