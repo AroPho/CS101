@@ -36,6 +36,7 @@ int main(int argc, char* argv[]){
     printf("Parent of 1: %d\n", getParent(A, 1));
     printf("Distance to source: %d\n", getDist(A, 1));
     printf("\n");
+    printf("fuck");
 
     addEdge(A,1,2);
     addEdge(A,2,3);
@@ -45,6 +46,7 @@ int main(int argc, char* argv[]){
     addEdge(A,4,3);
     addEdge(A,10,2);
     addEdge(A,7,3);
+    printf("fuck2");
     addEdge(A,11,5);
     addEdge(A,14,1);
     addEdge(A,15,2);
