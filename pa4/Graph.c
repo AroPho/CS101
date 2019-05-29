@@ -5,7 +5,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<assert.h>
-#include"List.h"
+//#include"List.h"
 #include"List.c"
 #include"Graph.h"
 
