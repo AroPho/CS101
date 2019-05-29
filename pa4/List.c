@@ -305,6 +305,16 @@ void delete(List L){
 
 }
 
+int dequeue(List L){
+  if(L != NULL){
+    moveFront(L);
+    int x = get(L);
+    deleteFront(L);
+    return x;
+  }
+  return -1;
+}
+
 void printNode(FILE *out, Node N){
   fprintf(out, "%d ", N->data);
 }

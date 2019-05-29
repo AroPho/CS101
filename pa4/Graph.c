@@ -161,8 +161,34 @@ void addArc(Graph G, int u, int v){
 
 
 /*** Other operations ***/
-void printGraph(FILE* out, Graph G);
+void printGraph(FILE* out, Graph G){
+    
+}
 
 void BFS(Graph G, int s){
-
+    if(G != NULL && s >= 1 && s <= G->order){
+        G->source = s;
+        G->distance[s] = 0;
+        G->color[s] = GRAY;
+        List Q = newList();
+        List adj;
+        append(Q, s);
+        int current;
+        while(length(Q) != 0){
+            current = dequeue(Q);
+            adj = G->neighbors[current];
+            moveFront(adj);
+            while(index(adj) != -1){
+                if(G->color[index(adj)] == WHITE){
+                    append(Q, index(adj));
+                    G->parent[index(adj)] = current;
+                    G->color[index(adj)] = GRAY;
+                    G->distance[index(adj)] = G->distance[current] + 1;
+                }
+                moveNext(adj);
+            }
+            G->color[current] = BLACK;
+        }
+        freeList(&Q);
+    }
 }

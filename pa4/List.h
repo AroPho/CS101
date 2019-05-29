@@ -28,6 +28,7 @@ void insertAfter(List L, int data);
 void deleteFront(List L);
 void deleteBack(List L);
 void delete(List L);
+int dequeue(List L);
 // Other operations -----------------------------------------------------------
 void printList(FILE* out, List L);
 List copyList(List L);
