@@ -40,10 +40,10 @@ Graph newGraph(int n){
     G-> neighbors = malloc(n*sizeof(List));
     G-> size = 0;
     G-> source = NIL;
-    G-> parent = malloc(n*sizeof(int));
-    G-> color = malloc(n* sizeof(int));
+    G-> parent = malloc((n+1)*sizeof(int));
+    G-> color = malloc((n+1)* sizeof(int));
     //G-> queue = malloc(n* sizeof(int));
-    G-> distance = malloc(n* sizeof(int));
+    G-> distance = malloc((n+1)* sizeof(int));
     for(int x = 0; x < n; x++){
         G->neighbors[x] = newList();
         G->parent[x] = NIL;
