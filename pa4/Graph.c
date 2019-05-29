@@ -93,7 +93,7 @@ int getSource(Graph G){
 int getParent(Graph G, int u){
     if( G != NULL){
 
-    }else if( u < 1 || u > G->order){
+    }else if( u < 1 || u > getOrder(G)){
 
     }
     return G->parent[u];
@@ -101,7 +101,7 @@ int getParent(Graph G, int u){
 int getDist(Graph G, int u){
     if( G != NULL){
 
-    }else if( u < 1 || u > G->order){
+    }else if( u < 1 || u > getOrder(G)){
 
     }
     return G->distance[u];
