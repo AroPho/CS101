@@ -210,15 +210,17 @@ void BFS(Graph G, int s){
         while(length(Q) != 0){
             current = dequeue(Q);
             adj = G->neighbors[current];
-            moveFront(adj);
-            while(index(adj) != -1){
-                if(G->color[index(adj)] == WHITE){
-                    append(Q, index(adj));
-                    G->parent[index(adj)] = current;
-                    G->color[index(adj)] = GRAY;
-                    G->distance[index(adj)] = G->distance[current] + 1;
+            if(length(adj) != 0) {
+                moveFront(adj);
+                while (index(adj) != -1) {
+                    if (G->color[index(adj)] == WHITE) {
+                        append(Q, index(adj));
+                        G->parent[index(adj)] = current;
+                        G->color[index(adj)] = GRAY;
+                        G->distance[index(adj)] = G->distance[current] + 1;
+                    }
+                    moveNext(adj);
                 }
-                moveNext(adj);
             }
             G->color[current] = BLACK;
         }
