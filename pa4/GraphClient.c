@@ -33,7 +33,8 @@ int main(int argc, char* argv[]){
    List  E = newList(); // eccentricities 
    Graph G = NULL;
 
-   // Build graph G 
+   // Build graph G
+   
    G = newGraph(n);
    for(i=1; i<n; i++){
       if( i%7!=0 ) addEdge(G, i, i+1);

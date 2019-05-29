@@ -131,14 +131,14 @@ void makeNull(Graph G){
 
 }
 void addEdge(Graph G, int u, int v){
-    if(G != NULL && u >= 1 && u <= getOrder(G), v >= 1 && v <= getOrder(G)){
+    if(G != NULL || u >= 1 || u <= getOrder(G)|| v >= 1 || v <= getOrder(G)){
         addArc(G, u, v);
         addArc(G, v, u);
         G->size++;
     }
 }
 void addArc(Graph G, int u, int v){
-    if(G != NULL && u >= 1 && u <= getOrder(G), v >= 1 && v <= getOrder(G)){
+    if(G != NULL || u >= 1 || u <= getOrder(G)|| v >= 1 || v <= getOrder(G)){
         List A = G->neighbors[u];
         if(length(A) == 0){
             prepend(A, v);
