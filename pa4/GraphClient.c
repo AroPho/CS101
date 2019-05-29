@@ -51,6 +51,7 @@ int main(int argc, char* argv[]){
     addEdge(A,9,7);
     addEdge(A,13,1);
 
+    printf("fuck");
     printGraph(stdout, A);
 
     printf("Size: %d\n", getSize(A));

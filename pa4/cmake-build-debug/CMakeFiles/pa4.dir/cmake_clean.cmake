@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/pa4.dir/main.c.obj"
   "CMakeFiles/pa4.dir/Graph.c.obj"
   "CMakeFiles/pa4.dir/List.c.obj"
+  "CMakeFiles/pa4.dir/GraphClient.c.obj"
   "pa4.pdb"
   "pa4.exe"
   "pa4.exe.manifest"

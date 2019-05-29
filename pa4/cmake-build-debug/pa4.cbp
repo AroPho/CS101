@@ -82,6 +82,9 @@
 		<Unit filename="C:/Users/aaron/Desktop/School/CS101/pa4/Graph.h">
 			<Option target="pa4"/>
 		</Unit>
+		<Unit filename="C:/Users/aaron/Desktop/School/CS101/pa4/GraphClient.c">
+			<Option target="pa4"/>
+		</Unit>
 		<Unit filename="C:/Users/aaron/Desktop/School/CS101/pa4/List.c">
 			<Option target="pa4"/>
 		</Unit>

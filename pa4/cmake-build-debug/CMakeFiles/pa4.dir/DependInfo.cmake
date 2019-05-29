@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/aaron/Desktop/School/CS101/pa4/Graph.c" "C:/Users/aaron/Desktop/School/CS101/pa4/cmake-build-debug/CMakeFiles/pa4.dir/Graph.c.obj"
+  "C:/Users/aaron/Desktop/School/CS101/pa4/GraphClient.c" "C:/Users/aaron/Desktop/School/CS101/pa4/cmake-build-debug/CMakeFiles/pa4.dir/GraphClient.c.obj"
   "C:/Users/aaron/Desktop/School/CS101/pa4/List.c" "C:/Users/aaron/Desktop/School/CS101/pa4/cmake-build-debug/CMakeFiles/pa4.dir/List.c.obj"
   "C:/Users/aaron/Desktop/School/CS101/pa4/main.c" "C:/Users/aaron/Desktop/School/CS101/pa4/cmake-build-debug/CMakeFiles/pa4.dir/main.c.obj"
   )

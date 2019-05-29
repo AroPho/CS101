@@ -11,10 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74ad410d-0d78-49e7-886b-f52fa5c1ffb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Graph.c" beforeDir="false" afterPath="$PROJECT_DIR$/Graph.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GraphClient.c" beforeDir="false" afterPath="$PROJECT_DIR$/GraphClient.c" afterDir="false" />
-    </list>
+    <list default="true" id="74ad410d-0d78-49e7-886b-f52fa5c1ffb1" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,8 +49,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GraphClient.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="-352">
+              <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
               <folding>
                 <element signature="e#1024#1041#0" expanded="true" />
               </folding>
@@ -122,7 +119,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-11" />
     <option name="width" value="1302" />
     <option name="height" value="1381" />
@@ -182,12 +179,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1558668916501</updated>
-      <workItem from="1558668919434" duration="20002000" />
+      <workItem from="1558668919434" duration="20288000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20002000" />
+    <option name="totallyTimeSpent" value="20288000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="0" width="744" height="789" extended-state="0" />
@@ -312,8 +309,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GraphClient.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+        <state relative-caret-position="-352">
+          <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
           <folding>
             <element signature="e#1024#1041#0" expanded="true" />
           </folding>

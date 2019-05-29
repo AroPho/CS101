@@ -149,6 +149,33 @@ Graph.c.s:
 	$(MAKE) -f CMakeFiles\pa4.dir\build.make CMakeFiles/pa4.dir/Graph.c.s
 .PHONY : Graph.c.s
 
+GraphClient.obj: GraphClient.c.obj
+
+.PHONY : GraphClient.obj
+
+# target to build an object file
+GraphClient.c.obj:
+	$(MAKE) -f CMakeFiles\pa4.dir\build.make CMakeFiles/pa4.dir/GraphClient.c.obj
+.PHONY : GraphClient.c.obj
+
+GraphClient.i: GraphClient.c.i
+
+.PHONY : GraphClient.i
+
+# target to preprocess a source file
+GraphClient.c.i:
+	$(MAKE) -f CMakeFiles\pa4.dir\build.make CMakeFiles/pa4.dir/GraphClient.c.i
+.PHONY : GraphClient.c.i
+
+GraphClient.s: GraphClient.c.s
+
+.PHONY : GraphClient.s
+
+# target to generate assembly for a file
+GraphClient.c.s:
+	$(MAKE) -f CMakeFiles\pa4.dir\build.make CMakeFiles/pa4.dir/GraphClient.c.s
+.PHONY : GraphClient.c.s
+
 List.obj: List.c.obj
 
 .PHONY : List.obj
@@ -215,6 +242,9 @@ help:
 	@echo ... Graph.obj
 	@echo ... Graph.i
 	@echo ... Graph.s
+	@echo ... GraphClient.obj
+	@echo ... GraphClient.i
+	@echo ... GraphClient.s
 	@echo ... List.obj
 	@echo ... List.i
 	@echo ... List.s

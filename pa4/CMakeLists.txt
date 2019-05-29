@@ -3,4 +3,4 @@ project(pa4 C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(pa4 main.c Graph.c List.c)
+add_executable(pa4 main.c Graph.c List.c GraphClient.c)
