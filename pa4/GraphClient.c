@@ -24,6 +24,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"Graph.h"
+#include"List.h"
 
 int main(int argc, char* argv[]){
    int i, s, max, min, d, n=35;

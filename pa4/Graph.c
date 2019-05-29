@@ -162,7 +162,7 @@ void addArc(Graph G, int u, int v){
 
 /*** Other operations ***/
 void printGraph(FILE* out, Graph G){
-    
+
 }
 
 void BFS(Graph G, int s){
