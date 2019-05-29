@@ -70,6 +70,9 @@ void freeList(List *pL){
 
 
 int length(List L){
+  if(L == NULL){
+    printf("This shit broke");
+  }
   return L->numItems;
 }
 
