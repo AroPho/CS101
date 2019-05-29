@@ -207,9 +207,6 @@ public class Matrix {
                             A.changeEntry(i, aent.column, (aent.ent + bent.ent));
                             a.moveNext();
                             b.moveNext();
-                        }else{
-                            a.moveNext();
-                            b.moveNext();
                         }
                     }else if(aent.column == count && bent.column != count){
                         A.changeEntry(i,count, aent.ent);
@@ -257,9 +254,6 @@ public class Matrix {
                     if(aent.column == bent.column){
                         if(aent.column == count) {
                             A.changeEntry(i, aent.column, (aent.ent - bent.ent));
-                            a.moveNext();
-                            b.moveNext();
-                        }else{
                             a.moveNext();
                             b.moveNext();
                         }
