@@ -34,11 +34,13 @@ int main(int argc, char* argv[]){
    Graph G = NULL;
 
    // Build graph G
-   
+
    G = newGraph(n);
+   printf("%d", getOrder(G));
    for(i=1; i<n; i++){
       if( i%7!=0 ) addEdge(G, i, i+1);
       if( i<=28  ) addEdge(G, i, i+7);
+      printf("%d", getSize(G));
    }
    addEdge(G, 9, 31);
    addEdge(G, 17, 13);
@@ -48,7 +50,7 @@ int main(int argc, char* argv[]){
    printGraph(stdout, G);
 
    // Calculate the eccentricity of each vertex 
-   for(s=1; s<=n; s++){
+   /*for(s=1; s<=n; s++){
       BFS(G, s);
       max = getDist(G, 1);
       for(i=2; i<=n; i++){
@@ -93,7 +95,7 @@ int main(int argc, char* argv[]){
    printf("Diameter = %d\n", max);
    printf("Peripheral vert%s: ", length(P)==1?"ex":"ices");
    printList(stdout, P);
-   printf("\n");
+   printf("\n");*/
 
    // Free objects 
    freeList(&C);

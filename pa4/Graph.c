@@ -166,7 +166,7 @@ void addArc(Graph G, int u, int v){
 /*** Other operations ***/
 void printGraph(FILE* out, Graph G){
     if (out == NULL) {
-            exit(1);
+        exit(1);
     } else if (G == NULL) {
         exit(1);
     }
