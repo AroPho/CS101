@@ -12,6 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74ad410d-0d78-49e7-886b-f52fa5c1ffb1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Graph.c" beforeDir="false" afterPath="$PROJECT_DIR$/Graph.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -27,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Graph.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="133" column="75" selection-start-line="133" selection-start-column="75" selection-end-line="133" selection-end-column="75" />
+            <state relative-caret-position="375">
+              <caret line="156" column="13" lean-forward="true" selection-start-line="156" selection-start-column="13" selection-end-line="156" selection-end-column="13" />
               <folding>
                 <element signature="e#40#57#0" expanded="true" />
               </folding>
@@ -60,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../pa2/Lex.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1575">
-              <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
+            <state relative-caret-position="2015">
+              <caret line="94" column="14" lean-forward="true" selection-start-line="94" selection-start-column="14" selection-end-line="94" selection-end-column="14" />
               <folding>
                 <element signature="e#83#100#0" expanded="true" />
               </folding>
@@ -72,7 +73,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/List.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="-2833">
               <caret line="207" column="14" lean-forward="true" selection-start-line="207" selection-start-column="14" selection-end-line="207" selection-end-column="14" />
               <folding>
                 <element signature="e#81#100#0" expanded="true" />
@@ -168,12 +169,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1558668916501</updated>
-      <workItem from="1558668919434" duration="18296000" />
+      <workItem from="1558668919434" duration="19023000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18296000" />
+    <option name="totallyTimeSpent" value="19023000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="0" width="744" height="789" extended-state="0" />
@@ -249,16 +250,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../pa2/Lex.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
-          <folding>
-            <element signature="e#83#100#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Graph.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -276,9 +267,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../pa2/Lex.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2015">
+          <caret line="94" column="14" lean-forward="true" selection-start-line="94" selection-start-column="14" selection-end-line="94" selection-end-column="14" />
+          <folding>
+            <element signature="e#83#100#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/List.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="-2833">
           <caret line="207" column="14" lean-forward="true" selection-start-line="207" selection-start-column="14" selection-end-line="207" selection-end-column="14" />
           <folding>
             <element signature="e#81#100#0" expanded="true" />
@@ -288,8 +289,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Graph.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="133" column="75" selection-start-line="133" selection-start-column="75" selection-end-line="133" selection-end-column="75" />
+        <state relative-caret-position="375">
+          <caret line="156" column="13" lean-forward="true" selection-start-line="156" selection-start-column="13" selection-end-line="156" selection-end-column="13" />
           <folding>
             <element signature="e#40#57#0" expanded="true" />
           </folding>
