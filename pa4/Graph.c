@@ -140,7 +140,7 @@ void addEdge(Graph G, int u, int v){
 void addArc(Graph G, int u, int v){
     if(G != NULL && u >= 1 && u <= getOrder(G)&& v >= 1 && v <= getOrder(G)){
         List A = G->neighbors[u];
-        if(length(A) == 0 && A != NULL){
+        if(A != NULL && length(A) == 0){
             prepend(A, v);
         }else {
             moveFront(A);
