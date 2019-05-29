@@ -6,6 +6,7 @@
 #include<string.h>
 #include<assert.h>
 #include"List.h"
+#include"List.c"
 #include"Graph.h"
 
 #define INF -8
