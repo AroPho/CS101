@@ -107,13 +107,14 @@ int getDist(Graph G, int u){
     return G->distance[u];
 }
 void getPath(List L, Graph G, int u){
-    if(G->source == u){
+    if (getSource(G) == NIL) {
+        printf("getPath called before BFS\n");
+        exit (1);
+    } if (G->source == u) {
         append(L, u);
-    }else if( G->source != NIL){
+    } else if (G->parent[u] != NIL) {
         getPath(L, G, G->parent[u]);
         append(L,u);
-    }else{
-
     }
 }
 
@@ -131,18 +132,34 @@ void makeNull(Graph G){
 
 }
 void addEdge(Graph G, int u, int v){
-    if(G != NULL && u >= 1 && u <= getOrder(G)&& v >= 1 && v <= getOrder(G)){
-        addArc(G, u, v);
-        addArc(G, v, u);
-        G->size++;
+    if(u < 1 || u > getOrder(G) || v < 1 || v > getOrder(G)) {
+        printf("Graph verticies out of bounds\n");
+        exit(1);
     }
+    addArc(G, u, v);
+    addArc(G, v, u);
+    G->size--;
 }
 void addArc(Graph G, int u, int v){
-    if(G != NULL && u >= 1 && u <= getOrder(G)&& v >= 1 && v <= getOrder(G)){
+    if(u < 1 || u > getOrder(G) || v < 1 || v > getOrder(G)) {
+        printf("Graph verticies out of bounds\n");
+        exit(1);
+    }
+    List S = G->neighbors[u];
+    moveFront(S);
+    while(index(S) != -1 && v < get(S)) {
+        moveNext(S);
+    }
+    if(index(S) == -1)
+        append(S, v);
+    else
+        insertBefore(S, v);
+    G->size++;
+    /*if(u < 1 || u > getOrder(G) || v < 1 || v > getOrder(G)){
         List A = G->neighbors[u];
-        /*if(A != NULL && length(A) == 0){
+        *//*if(A != NULL && length(A) == 0){
             prepend(A, v);
-        }else {*/
+        }else {*//*
             moveFront(A);
             while (index(A) != -1) {
                 if (index(A) > v) {
@@ -159,7 +176,7 @@ void addArc(Graph G, int u, int v){
         G->size++;
     }else{
 
-    }
+    }*/
 }
 
 
@@ -173,6 +190,7 @@ void printGraph(FILE* out, Graph G){
     for (int i = 1; i <= getOrder(G); i++) {
         fprintf(out,"%d: ",i);
         printList(out,G->neighbors[i]);
+        fprintf(out, "\n");
     }
 }
 
