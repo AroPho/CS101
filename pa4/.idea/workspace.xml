@@ -11,9 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74ad410d-0d78-49e7-886b-f52fa5c1ffb1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Graph.c" beforeDir="false" afterPath="$PROJECT_DIR$/Graph.c" afterDir="false" />
-    </list>
+    <list default="true" id="74ad410d-0d78-49e7-886b-f52fa5c1ffb1" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,11 +22,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Graph.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+            <state relative-caret-position="439">
+              <caret line="167" column="21" lean-forward="true" selection-start-line="167" selection-start-column="21" selection-end-line="167" selection-end-column="21" />
               <folding>
                 <element signature="e#40#57#0" expanded="true" />
               </folding>
@@ -36,10 +34,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GraphClient.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-73">
+            <state relative-caret-position="-1250">
               <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
             </state>
           </provider>
@@ -165,12 +163,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1558668916501</updated>
-      <workItem from="1558668919434" duration="16028000" />
+      <workItem from="1558668919434" duration="16287000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16028000" />
+    <option name="totallyTimeSpent" value="16287000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1477" height="797" extended-state="6" />
@@ -263,13 +261,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GraphClient.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-73">
-          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/List.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7875">
@@ -282,11 +273,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Graph.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+        <state relative-caret-position="439">
+          <caret line="167" column="21" lean-forward="true" selection-start-line="167" selection-start-column="21" selection-end-line="167" selection-end-column="21" />
           <folding>
             <element signature="e#40#57#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GraphClient.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1250">
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
         </state>
       </provider>
     </entry>

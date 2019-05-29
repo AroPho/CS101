@@ -77,11 +77,13 @@ int getOrder(Graph G){
     if( G != NULL){
         return  G->order;
     }
+    return 0;
 }
 int getSize(Graph G){
     if(G != NULL){
         return G->size;
     }
+    return -1;
 }
 int getSource(Graph G){
     if( G!= NULL){

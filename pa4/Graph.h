@@ -1,7 +1,7 @@
 #ifndef _GRAPH_H_INCLUDE_
 #define _GRAPH_H_INCLUDE_
 
-#import "List.h"
+#include "List.h"
 
 
 
@@ -21,6 +21,7 @@ void getPath(List L, Graph G, int u);
 void makeNull(Graph G);
 void addEdge(Graph G, int u, int v);
 void addArc(Graph G, int u, int v);
+void printGraph(FILE* out, Graph G);
 void BFS(Graph G, int s);
 
 #endif
