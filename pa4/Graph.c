@@ -165,17 +165,14 @@ void addArc(Graph G, int u, int v){
 
 /*** Other operations ***/
 void printGraph(FILE* out, Graph G){
-    setbuf(out,NULL);
-
     if (out == NULL) {
-        exit(1);
+            exit(1);
     } else if (G == NULL) {
         exit(1);
     }
     for (int i = 1; i <= getOrder(G); i++) {
-        fprintf(out,"%d:",i);
+        fprintf(out,"%d: ",i);
         printList(out,G->neighbors[i]);
-        fprintf(out,"\n");
     }
 }
 
