@@ -146,15 +146,17 @@ void addArc(Graph G, int u, int v){
         exit(1);
     }
     List S = G->neighbors[u];
-    moveFront(S);
-    while(index(S) != -1 && v < get(S)) {
-        moveNext(S);
+    if(length(S) != 0) {
+        moveFront(S);
+        while (index(S) != -1 && v < get(S)) {
+            moveNext(S);
+        }
+        if (index(S) == -1)
+            append(S, v);
+        else
+            insertBefore(S, v);
+        G->size++;
     }
-    if(index(S) == -1)
-        append(S, v);
-    else
-        insertBefore(S, v);
-    G->size++;
     /*if(u < 1 || u > getOrder(G) || v < 1 || v > getOrder(G)){
         List A = G->neighbors[u];
         *//*if(A != NULL && length(A) == 0){
