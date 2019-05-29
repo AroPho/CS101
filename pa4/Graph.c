@@ -150,7 +150,7 @@ void addArc(Graph G, int u, int v){
         prepend(S, v);
     }else{
         moveFront(S);
-        while (index(S) != -1 && v < get(S)) {
+        while (index(S) != -1 && v > get(S)) {
             moveNext(S);
         }
         if (index(S) == -1)
