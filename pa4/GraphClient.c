@@ -35,9 +35,9 @@ int main(int argc, char* argv[]){
     printf("Source: %d\n", getSource(A));
     printf("Parent of 1: %d\n", getParent(A, 1));
     printf("Distance to source: %d\n", getDist(A, 1));
-    printf("\n");
     printf("fuck1");
-
+    printf("\n");
+    printf("fuck2");
     addEdge(A,1,2);
     addEdge(A,2,3);
     addEdge(A,3,5);
@@ -46,14 +46,14 @@ int main(int argc, char* argv[]){
     addEdge(A,4,3);
     addEdge(A,10,2);
     addEdge(A,7,3);
-    printf("fuck2");
+    printf("fuck3");
     addEdge(A,11,5);
     addEdge(A,14,1);
     addEdge(A,15,2);
     addEdge(A,9,7);
     addEdge(A,13,1);
 
-    printf("fuck");
+    printf("fuck4");
     printGraph(stdout, A);
 
     printf("Size: %d\n", getSize(A));

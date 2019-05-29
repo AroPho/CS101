@@ -37,14 +37,14 @@ Graph newGraph(int n){
     Graph G = malloc(sizeof(GraphObj));
     assert(G != NULL);
     G-> order = n;
-    G-> neighbors = malloc(n*sizeof(List));
+    G-> neighbors = malloc((n+1)*sizeof(List));
     G-> size = 0;
     G-> source = NIL;
     G-> parent = malloc((n+1)*sizeof(int));
     G-> color = malloc((n+1)* sizeof(int));
     //G-> queue = malloc(n* sizeof(int));
     G-> distance = malloc((n+1)* sizeof(int));
-    for(int x = 0; x < n; x++){
+    for(int x = 0; x < n+1; x++){
         G->neighbors[x] = newList();
         G->parent[x] = NIL;
         G->distance[x] = INF;
@@ -54,7 +54,7 @@ Graph newGraph(int n){
     return G;
 }
 void freeGraph(Graph* pG){
-    for(int x = 0; x < (*pG)->order; x++){
+    for(int x = 0; x < (*pG)->order + 1; x++){
         freeList(&((*pG)->neighbors[x]));
     }
     //free((*pG)->queue);
@@ -146,7 +146,9 @@ void addArc(Graph G, int u, int v){
         exit(1);
     }
     List S = G->neighbors[u];
-    if(length(S) != 0) {
+    if(length(S) == 0) {
+        append(S, v);
+    }else{
         moveFront(S);
         while (index(S) != -1 && v < get(S)) {
             moveNext(S);
