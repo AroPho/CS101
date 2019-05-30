@@ -254,17 +254,25 @@ void insertAfter(List L, int data){
 
 void deleteFront(List L){
   if(L->numItems != 0){
-    Node temp = L->head;
-    L->head = L-> head->next;
-    L->head->prev = NULL;
-    freeNode(&temp);
-    L->numItems--;
-    if(L->index == 0){
-      L->index--;
-      L->cursor = NULL;
-    }else if(L-> index != -1){
-      L->index--;
-    }
+      if(L->numItems == 1){
+          Node temp = L->tail;
+          freeNode(&temp);
+          L->tail = NULL;
+          L->head = NULL;
+          L->numItems--;
+      }else {
+          Node temp = L->head;
+          L->head = L->head->next;
+          L->head->prev = NULL;
+          freeNode(&temp);
+          L->numItems--;
+          if (L->index == 0) {
+              L->index--;
+              L->cursor = NULL;
+          } else if (L->index != -1) {
+              L->index--;
+          }
+      }
   }
 }
 

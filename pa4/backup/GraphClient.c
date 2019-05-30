@@ -27,6 +27,7 @@
 #include"List.h"
 
 int main(int argc, char* argv[]){
+
    int i, s, max, min, d, n=35;
    List  C = newList(); // central vertices 
    List  P = newList(); // peripheral vertices 
@@ -34,7 +35,7 @@ int main(int argc, char* argv[]){
    Graph G = NULL;
 
    // Build graph G
-   
+
    G = newGraph(n);
    for(i=1; i<n; i++){
       if( i%7!=0 ) addEdge(G, i, i+1);

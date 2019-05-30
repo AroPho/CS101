@@ -9,12 +9,11 @@
 //#include"List.c"
 #include"Graph.h"
 
-#define INF -8
-#define NIL -9
-#define WHITE -1
-#define GRAY -2
-#define BLACK -3
-
+typedef enum color{
+  WHITE,
+  GRAY,
+  BLACK
+}color;
 
 /*** Constructors-Destructors ***/
 
@@ -91,18 +90,18 @@ int getSource(Graph G){
     }
 }
 int getParent(Graph G, int u){
-    if( G != NULL){
+  if(G != NULL){
 
-    }else if( u < 1 || u > getOrder(G)){
+  } else if( u < 1 || u > getOrder(G)){
 
     }
     return G->parent[u];
 }
 int getDist(Graph G, int u){
-    if( G != NULL){
+  if(G != NULL){
 
-    }else if( u < 1 || u > getOrder(G)){
-
+  }else if( getSource(G) == u){
+        return -1;
     }
     return G->distance[u];
 }
@@ -145,20 +144,22 @@ void addArc(Graph G, int u, int v){
         printf("Graph verticies out of bounds\n");
         exit(1);
     }
-    List S = G->neighbors[u];
-    if(length(S) == 0) {
-        prepend(S, v);
+    List adj = G->neighbors[u];
+    if(length(adj) == 0) {
+        prepend(adj, v);
     }else{
-        moveFront(S);
-        while (index(S) != -1 && v > get(S)) {
-            moveNext(S);
+        moveFront(adj);
+        while (index(adj) != -1 && v > get(adj)) {
+            moveNext(adj);
         }
-        if (index(S) == -1)
-            append(S, v);
-        else
-            insertBefore(S, v);
-        G->size++;
+        if (index(adj) == -1){
+            append(adj, v);
+        }
+        else{
+            insertBefore(adj, v);
+        }
     }
+    G->size++;
     /*if(u < 1 || u > getOrder(G) || v < 1 || v > getOrder(G)){
         List A = G->neighbors[u];
         *//*if(A != NULL && length(A) == 0){
@@ -191,8 +192,7 @@ void printGraph(FILE* out, Graph G){
         exit(1);
     } else if (G == NULL) {
         exit(1);
-    }
-    for (int i = 1; i <= getOrder(G); i++) {
+    } for (int i = 1; i <= getOrder(G); i++) {
         fprintf(out,"%d: ",i);
         printList(out,G->neighbors[i]);
         fprintf(out, "\n");
@@ -201,9 +201,15 @@ void printGraph(FILE* out, Graph G){
 
 void BFS(Graph G, int s){
     if(G != NULL && s >= 1 && s <= G->order){
+      for(int i = 0; i <= getOrder(G);i++){
+        G->color[i] = WHITE;
+        G->distance[i] = INF;
+        G->parent[i] = NIL;
+      }
         G->source = s;
         G->distance[s] = 0;
         G->color[s] = GRAY;
+        G->parent[s] = NIL;
         List Q = newList();
         List adj;
         append(Q, s);
