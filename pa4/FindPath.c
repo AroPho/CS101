@@ -57,17 +57,14 @@ int main (int argc, char* argv[]) {
         BFS(G, source);
         getPath(L, G, destination);
         fprintf(out, "\nThe distance from %d to %d is ", source, destination);
-        }if(Length(L) != 0 ) {
-            moveFront(L);
-            if(get(L) != -1) {
-                fprintf(out, "%d\n", getDist(G, destination));
-                fprintf(out, "A shortest %d-%d path is: ", source, destination);
-                printList(out, L);
-                fprintf(out, "\n");
-            }else{
-                fprintf(out, "infinity\nNo %d-%d path exists\n", source, destination);
-            }
-
+        moveFront(L);
+        if(get(L) != -1){
+            fprintf(out, "%d\n", getDist(G, destination));
+            fprintf(out, "A shortest %d-%d path is: ", source, destination);
+            printList(out, L);
+            fprintf(out, "\n");
+        }else {
+            fprintf(out, "infinity\nNo %d-%d path exists\n", source, destination);
         }
         clear(L);
     }
