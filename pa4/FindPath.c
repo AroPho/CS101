@@ -57,8 +57,7 @@ int main (int argc, char* argv[]) {
         BFS(G, source);
         getPath(L, G, destination);
         fprintf(out, "\nThe distance from %d to %d is ", source, destination);
-        moveFront(L);
-        if(get(L) != -1){
+        if(getDist(G, destination) != -1){
             fprintf(out, "%d\n", getDist(G, destination));
             fprintf(out, "A shortest %d-%d path is: ", source, destination);
             printList(out, L);
