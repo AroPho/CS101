@@ -45,6 +45,7 @@ int main(int argc, char* argv[]){
     append(C, 2);
     append(C, 64);
     if (!equals(L, C)) printf("1");
+    printf("\n");
     printList(stdout, L);
     printList(stdout, C);
     printf("\n");
@@ -53,11 +54,13 @@ int main(int argc, char* argv[]){
     getPath(L, A, 2);
     append(C, 2);
     if (!equals(L, C)) printf("2");
+    printf("\n");
     printList(stdout, L);
     printList(stdout, C);
     printf("\n");
     getPath(L, A, 99);
     if (equals(L, C)) printf("3");
+    printf("\n");
     printList(stdout, L);
     printList(stdout, C);
     printf("\n");
@@ -67,6 +70,7 @@ int main(int argc, char* argv[]){
     BFS(A, 99);
     getPath(L, A, 2);
     if (!equals(C, L)) printf("4");
+    printf("\n");
     printList(stdout, L);
     printList(stdout, C);
     printf("\n");
