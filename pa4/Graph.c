@@ -108,9 +108,11 @@ void getPath(List L, Graph G, int u){
     if (getSource(G) == NIL) {
         printf("getPath called before BFS\n");
         exit (1);
-    }if(G->parent[u] == NIL){
+    }
+    if(G->color[u] == WHITE){
         append(L, NIL);
-    }else if (G->source == u) {
+    }
+    if (G->source == u) {
         append(L, u);
     } else if (G->parent[u] != NIL) {
         getPath(L, G, G->parent[u]);
