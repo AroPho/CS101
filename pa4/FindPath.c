@@ -15,7 +15,7 @@ typedef char *string;
 int main (int argc, char* argv[]) {
     // Check for correct number of arguments
     if (argc != 3) {
-        printf("Usage: %s <input file> <output file>\n", argv[0]);
+        printf("FindPath <input file> <output file>\n");
         exit (1);
     }
     // Init, open and check files
@@ -38,7 +38,9 @@ int main (int argc, char* argv[]) {
     // Populate Graph
     int x,y;
     while (fscanf(in, "%d %d", &x, &y) == 2) {
-        if (x == 0 && y == 0) break;
+        if (x == 0 && y == 0){
+            break;
+        }
         addEdge(G,x,y);
     }
 
@@ -47,17 +49,19 @@ int main (int argc, char* argv[]) {
 
     // Print the paths
     List L = newList();
-    int source, dest;
-    while (fscanf(in, "%d %d", &source, &dest)) {
-        if (source == 0 && dest == 0) break;
+    int source, destination;
+    while (fscanf(in, "%d %d", &source, &destination)) {
+        if (source == 0 && destination == 0){
+            break;
+        }
         BFS(G, source);
-        getPath(L, G, dest);
-        fprintf(out, "\nThe distance from %d to %d is ", source, dest);
+        getPath(L, G, destination);
+        fprintf(out, "\nThe distance from %d to %d is ", source, destination);
         if (length(L) == 0) {
-            fprintf(out, "infinity\nNo %d-%d path exists\n", source, dest);
+            fprintf(out, "infinity\nNo %d-%d path exists\n", source, destination);
         } else {
-            fprintf(out, "%d\n", getDist(G, dest));
-            fprintf(out, "A shortest %d-%d path is: ", source, dest);
+            fprintf(out, "%d\n", getDist(G, destination));
+            fprintf(out, "A shortest %d-%d path is: ", source, destination);
             printList(out, L);
             fprintf(out, "\n");
         }
