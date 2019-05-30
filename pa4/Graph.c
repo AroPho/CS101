@@ -105,14 +105,19 @@ int getDist(Graph G, int u){
     return G->distance[u];
 }
 void getPath(List L, Graph G, int u){
-    if (getSource(G) == NIL) {
-        printf("getPath called before BFS\n");
-        exit (1);
-    } if (G->source == u) {
-        append(L, u);
-    } else if (G->parent[u] != NIL) {
-        getPath(L, G, G->parent[u]);
-        append(L,u);
+    if(u >= 1 && u <=  getOrder(G)) {
+        if (getSource(G) == NIL) {
+            printf("getPath called before BFS\n");
+            exit(1);
+        }
+        if (G->source == u) {
+            append(L, u);
+        } else if (G->parent[u] != NIL) {
+            getPath(L, G, G->parent[u]);
+            append(L, u);
+        }
+    }else{
+        append(L, NIL);
     }
 }
 
