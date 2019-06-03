@@ -43,7 +43,7 @@ Graph newGraph(int n){
     G-> source = NIL;
     G-> parent = malloc((n+1)*sizeof(int));
     G-> discover = malloc((n+1)* sizeof(int));
-    G-> color = malloc(n* sizeof(int));
+    G-> color = malloc((n+1)* sizeof(int));
     G-> finish = malloc((n+1)* sizeof(int));
     for(int x = 0; x < n+1; x++){
         G->neighbors[x] = newList();
