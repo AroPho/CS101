@@ -88,11 +88,11 @@ int main (int argc, char* argv[]) {
 
 
     clear(S);
-    clear(Components);
+    //clear(Components);
     // Clean up
     freeGraph(&G);
     freeList(&S);
-    freeList(&Components);
+    //freeList(&Components);
     fclose(in);
     fclose(out);
 }
