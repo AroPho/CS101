@@ -207,6 +207,7 @@ int Visit(Graph G, List L, int u, int *time){
         while (index(adj) != -1) {
             current = get(adj);
             if (G->color[current] == WHITE) {
+                G->parent[current] = u;
                 Visit(G, L, current, time);
             }
             moveNext(adj);
