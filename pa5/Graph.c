@@ -199,11 +199,11 @@ void addArc(Graph G, int u, int v){
 int Visit(Graph G, List L, int u, int *time){
     printf("%d", *time);
     List adj = G->neighbors[u];
-    moveFront(adj);
     int current;
     G->color[u] = GRAY;
     G->discover[u] = ++*time;
     if(length(adj) != 0) {
+        moveFront(adj);
         while (index(adj) != -1) {
             current = get(adj);
             if (G->color[current] == WHITE) {
