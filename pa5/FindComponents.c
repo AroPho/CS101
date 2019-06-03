@@ -81,7 +81,7 @@ int main (int argc, char* argv[]) {
         append(Components[comp], get(S));
         moveNext(S);
     }
-    fprintf(out, "\nG contains 4 strongly connected components:");
+    fprintf(out, "\nG contains %d strongly connected components:", scc);
     for(int x = 0; x < scc; x++){
         fprintf(out, "\nComponent %d: ", (x + 1));
         printList(out, Components[x]);
