@@ -197,11 +197,11 @@ void addArc(Graph G, int u, int v){
 }
 
 int Visit(Graph G, List L, int u, int time){
-    printf(time);
     time++;
     List adj = G->neighbors[u];
     moveFront(adj);
     int current;
+    G->color[u] = GRAY;
     while(index(adj) != -1){
         current = get(adj);
         if(G->color[current] == WHITE){
@@ -228,8 +228,7 @@ void DFS(Graph G, List S){
     while(index(S) != -1){
         int vertex = get(S);
         G->discover[vertex] = time;
-        G->color[vertex] = GRAY;
-        if(G->discover[vertex] != WHITE){
+        if(G->color[vertex] == WHITE){
             time = Visit(G, S, vertex, time);
         }
         moveNext(S);
