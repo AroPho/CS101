@@ -72,7 +72,7 @@ int main (int argc, char* argv[]) {
     }
     int comp = 0;
     moveFront(S);
-    while(index(S) != -1 && comp != scc){
+    while(index(S) != -1 && comp <= scc){
         if(getParent(Gt, get(S)) == NIL){
             comp++;
         }
@@ -92,7 +92,7 @@ int main (int argc, char* argv[]) {
     // Clean up
     freeGraph(&G);
     freeList(&S);
-    freeList(Components);
+    freeList(&Components);
     fclose(in);
     fclose(out);
 }

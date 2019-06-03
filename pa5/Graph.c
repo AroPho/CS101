@@ -48,8 +48,8 @@ Graph newGraph(int n){
     for(int x = 0; x < n+1; x++){
         G->neighbors[x] = newList();
         G->parent[x] = NIL;
-        G->finish[x] = INF;
-        G->discover[x] = NIL;
+        G->finish[x] = UNDEF;
+        G->discover[x] = UNDEF;
         G->color[x] = WHITE;
     }
     return G;
@@ -117,7 +117,7 @@ void getPath(List L, Graph G, int u){
         printf("getPath called before BFS\n");
         exit (1);
     }
-    if(G->discover[u] == WHITE){
+    if(G->discover[u] == UNDEF){
         append(L, NIL);
     }
     if (G->source == u) {
@@ -219,9 +219,10 @@ int Visit(Graph G, List L, int u, int *time){
 
 void DFS(Graph G, List S){
     for(int i = 0; i <= getOrder(G);i++){
-        G->discover[i] = WHITE;
-        G->finish[i] = INF;
+        G->discover[i] = UNDEF;
+        G->finish[i] = UNDEF;
         G->parent[i] = NIL;
+        G->color[i] = WHITE;
     }
     int time = 0;
     moveFront(S);
