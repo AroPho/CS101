@@ -87,7 +87,12 @@ int main (int argc, char* argv[]) {
 
 
 
+
+
     clear(S);
+    for(int x = 0; x < scc + 1; x++){
+        freeList(&Components[x]);
+    }
     //clear(Components);
     // Clean up
     freeGraph(&G);
