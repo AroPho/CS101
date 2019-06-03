@@ -214,8 +214,7 @@ int Visit(Graph G, List L, int u, int *time){
     }
     G->color[u] = BLACK;
     G->finish[u] = ++*time;
-    append(L, u);
-    deleteFront(L);
+    prepend(L, u);
 }
 
 void DFS(Graph G, List S){
@@ -226,12 +225,12 @@ void DFS(Graph G, List S){
     }
     int time = 0;
     moveFront(S);
-    while(index(S) <= getOrder(G)){
+    while(index(S) != -1){
         int vertex = dequeue(S);
         if(G->color[vertex] == WHITE){
             Visit(G, S, vertex, &time);
         }
-        moveFront(S);
+        moveNext(S);
     }
 }
 
