@@ -203,13 +203,14 @@ int Visit(Graph G, List L, int u, int *time){
     int current;
     G->color[u] = GRAY;
     G->discover[u] = ++*time;
-
-    while(index(adj) != -1){
-        current = get(adj);
-        if(G->color[current] == WHITE){
-            Visit(G, L, current, time);
+    if(length(adj) != 0) {
+        while (index(adj) != -1) {
+            current = get(adj);
+            if (G->color[current] == WHITE) {
+                Visit(G, L, current, time);
+            }
+            moveNext(adj);
         }
-        moveNext(adj);
     }
     G->color[u] = BLACK;
     G->finish[u] = ++*time;
