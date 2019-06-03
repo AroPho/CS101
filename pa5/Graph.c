@@ -227,6 +227,7 @@ void DFS(Graph G, List S){
     while(index(S) != -1){
         int vertex = get(S);
         G->discover[vertex] = time;
+        G->color[vertex] = GRAY;
         if(G->discover[vertex] != WHITE){
             time = Visit(G, S, vertex, time);
         }
