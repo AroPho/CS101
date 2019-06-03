@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/pa5.dir/Graph.c.obj"
   "CMakeFiles/pa5.dir/List.c.obj"
   "CMakeFiles/pa5.dir/GraphClient.c.obj"
+  "CMakeFiles/pa5.dir/FindComponents.c.obj"
   "pa5.pdb"
   "pa5.exe"
   "pa5.exe.manifest"

@@ -122,6 +122,33 @@ pa5/fast:
 	$(MAKE) -f CMakeFiles\pa5.dir\build.make CMakeFiles/pa5.dir/build
 .PHONY : pa5/fast
 
+FindComponents.obj: FindComponents.c.obj
+
+.PHONY : FindComponents.obj
+
+# target to build an object file
+FindComponents.c.obj:
+	$(MAKE) -f CMakeFiles\pa5.dir\build.make CMakeFiles/pa5.dir/FindComponents.c.obj
+.PHONY : FindComponents.c.obj
+
+FindComponents.i: FindComponents.c.i
+
+.PHONY : FindComponents.i
+
+# target to preprocess a source file
+FindComponents.c.i:
+	$(MAKE) -f CMakeFiles\pa5.dir\build.make CMakeFiles/pa5.dir/FindComponents.c.i
+.PHONY : FindComponents.c.i
+
+FindComponents.s: FindComponents.c.s
+
+.PHONY : FindComponents.s
+
+# target to generate assembly for a file
+FindComponents.c.s:
+	$(MAKE) -f CMakeFiles\pa5.dir\build.make CMakeFiles/pa5.dir/FindComponents.c.s
+.PHONY : FindComponents.c.s
+
 Graph.obj: Graph.c.obj
 
 .PHONY : Graph.obj
@@ -239,6 +266,9 @@ help:
 	@echo ... rebuild_cache
 	@echo ... pa5
 	@echo ... edit_cache
+	@echo ... FindComponents.obj
+	@echo ... FindComponents.i
+	@echo ... FindComponents.s
 	@echo ... Graph.obj
 	@echo ... Graph.i
 	@echo ... Graph.s

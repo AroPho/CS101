@@ -76,6 +76,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/aaron/Desktop/School/CS101/pa5/FindComponents.c">
+			<Option target="pa5"/>
+		</Unit>
 		<Unit filename="C:/Users/aaron/Desktop/School/CS101/pa5/Graph.c">
 			<Option target="pa5"/>
 		</Unit>
