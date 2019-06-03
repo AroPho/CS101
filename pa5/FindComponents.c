@@ -72,11 +72,11 @@ int main (int argc, char* argv[]) {
     for(int x = 0; x < scc; x++){
         Components[x] = newList();
     }
-    int comp = 0;
+    int comp = scc;
     moveFront(S);
-    while(index(S) != -1 && comp < scc){
+    while(index(S) != -1 && comp >= 0){
         if(getParent(Gt, get(S)) == NIL){
-            comp++;
+            comp--;
         }
         append(Components[comp], get(S));
         moveNext(S);
@@ -86,6 +86,7 @@ int main (int argc, char* argv[]) {
         fprintf(out, "\nComponent %d: ", (x + 1));
         printList(out, Components[x]);
     }
+    fprintf(out, "\n");
 
 
 
