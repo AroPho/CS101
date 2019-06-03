@@ -61,10 +61,12 @@ int main (int argc, char* argv[]) {
 
     DFS(Gt, S);
     int scc = 0;
-    for(int x = 1; x <= getOrder(G); x++){
-        if(getParent(Gt, x) == NIL){
+    moveFront(S);
+    while(index(S) != -1){
+        if(getParent(Gt, get(S))){
             scc++;
         }
+        moveNext(S);
     }
     List Components[scc];
     for(int x = 0; x < scc; x++){
