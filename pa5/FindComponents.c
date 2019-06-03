@@ -63,7 +63,7 @@ int main (int argc, char* argv[]) {
     int scc = 0;
     moveFront(S);
     while(index(S) != -1){
-        if(getParent(Gt, get(S))){
+        if(getParent(Gt, get(S)) == NIL){
             scc++;
         }
         moveNext(S);
