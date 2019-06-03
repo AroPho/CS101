@@ -46,7 +46,7 @@ int main (int argc, char* argv[]) {
         addArc(G,x,y);
     }
     List S = newList();
-    for (int i = 0; i < getOrder(G); ++i) {
+    for (int i = 1; i <= getOrder(G); ++i) {
         append(S,i);
     }
 
