@@ -72,7 +72,7 @@ int main (int argc, char* argv[]) {
     }
     int comp = 0;
     moveFront(S);
-    /*while(index(S) != -1 && comp <= scc){
+    while(index(S) != -1 && comp <= scc){
         if(getParent(Gt, get(S)) == NIL){
             comp++;
         }
@@ -83,7 +83,7 @@ int main (int argc, char* argv[]) {
     for(int x = 0; x < scc; x++){
         fprintf(out, "\nComponent %d: ", (x + 1));
         printList(out, Components[x]);
-    }*/
+    }
 
 
 
