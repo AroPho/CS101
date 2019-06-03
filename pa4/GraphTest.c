@@ -1,12 +1,13 @@
-//
-// Created by aaron on 5/29/2019.
-//
+// PA4
+// CMPS 101 Tantalo Spring 2019
+// Aaron Nguyen
+// anguy200
+// 1585632
 
 #include<stdio.h>
 #include<stdlib.h>
 #include"Graph.h"
 #include"List.h"
-
 #include<stdio.h>
 #include"Graph.h"
 

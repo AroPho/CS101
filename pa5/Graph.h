@@ -1,4 +1,4 @@
-// PA4
+// PA5
 // CMPS 101 Tantalo Spring 2019
 // Aaron Nguyen
 // anguy200
@@ -12,7 +12,7 @@
 #define INF -1
 #define NIL 0
 
- 
+
 
 typedef struct GraphObj* Graph;
 
@@ -33,6 +33,5 @@ void DFS(Graph G, List S); /* Pre: length(S)==getOrder(G) */
 Graph transpose(Graph G);
 Graph copyGraph(Graph G);
 void printGraph(FILE* out , Graph G);
-
 
 #endif

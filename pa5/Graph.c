@@ -11,9 +11,9 @@
 #include"Graph.h"
 
 typedef enum color{
-  WHITE,
-  GRAY,
-  BLACK
+    WHITE,
+    GRAY,
+    BLACK
 }color;
 
 /*** Constructors-Destructors ***/
@@ -21,9 +21,10 @@ typedef enum color{
 typedef struct GraphObj{
     List *neighbors;
     int *parent;
+    int *discover;
     int *color;
     //int *queue;
-    int *distance;
+    int *finish;
     int source;
     int order;
     int size;
@@ -41,15 +42,15 @@ Graph newGraph(int n){
     G-> size = 0;
     G-> source = NIL;
     G-> parent = malloc((n+1)*sizeof(int));
-    G-> color = malloc((n+1)* sizeof(int));
-    //G-> queue = malloc(n* sizeof(int));
-    G-> distance = malloc((n+1)* sizeof(int));
+    G-> discover = malloc((n+1)* sizeof(int));
+    G-> color = malloc(n* sizeof(int));
+    G-> finish = malloc((n+1)* sizeof(int));
     for(int x = 0; x < n+1; x++){
         G->neighbors[x] = newList();
         G->parent[x] = NIL;
-        G->distance[x] = INF;
+        G->finish[x] = INF;
+        G->discover[x] = NIL;
         G->color[x] = WHITE;
-        //G->queue[x] = NIL;
     }
     return G;
 }
@@ -57,15 +58,15 @@ void freeGraph(Graph* pG){
     for(int x = 0; x < (*pG)->order + 1; x++){
         freeList(&((*pG)->neighbors[x]));
     }
-    //free((*pG)->queue);
-    free((*pG)->parent);
-    free((*pG)->distance);
     free((*pG)->color);
+    free((*pG)->parent);
+    free((*pG)->finish);
+    free((*pG)->discover);
     free((*pG)->neighbors);
-    //(*pG)->queue = NULL;
-    (*pG)->parent = NULL;
-    (*pG)->distance = NULL;
     (*pG)->color = NULL;
+    (*pG)->parent = NULL;
+    (*pG)->finish = NULL;
+    (*pG)->discover = NULL;
     (*pG)->neighbors = NULL;
     free(*pG);
     *pG = NULL;
@@ -91,27 +92,32 @@ int getSource(Graph G){
     }
 }
 int getParent(Graph G, int u){
-  if(G != NULL){
+    if(G != NULL){
 
-  } else if( u < 1 || u > getOrder(G)){
+    } else if( u < 1 || u > getOrder(G)){
 
     }
     return G->parent[u];
 }
-int getDist(Graph G, int u){
-  if(G != NULL){
+int getDiscover(Graph G, int u){
+    if(G != NULL){
 
-  }else if( getSource(G) == u){
+    }else if( getSource(G) == u){
         return -1;
     }
-    return G->distance[u];
+    return G->discover[u];
 }
+
+int getFinish(Graph G, int u){
+    return G->finish[u];
+}
+
 void getPath(List L, Graph G, int u){
     if (getSource(G) == NIL) {
         printf("getPath called before BFS\n");
         exit (1);
     }
-    if(G->color[u] == WHITE){
+    if(G->discover[u] == WHITE){
         append(L, NIL);
     }
     if (G->source == u) {
@@ -190,8 +196,75 @@ void addArc(Graph G, int u, int v){
     }*/
 }
 
+void Visit(Graph G, List L, int u, int *time){
+    List adj = G->neighbors[u];
+    moveFront(adj);
+    int current;
+    while(index(adj) != -1){
+        current = get(adj);
+        if(G->color[current] == WHITE){
+            G->discover[current] = *time++;
+            G->color[current] = GRAY;
+            Visit(G, L, current, time);
+        }
+        moveNext(adj);
+    }
+    G->color[u] = BLACK;
+    G->finish[u] = ++*time;
+    prepend(L, u);
+}
+
+void DFS(Graph G, List S){
+    for(int i = 0; i <= getOrder(G);i++){
+        G->discover[i] = WHITE;
+        G->finish[i] = INF;
+        G->parent[i] = NIL;
+    }
+    int time = 0;
+    moveFront(S);
+    while(index(S) != -1){
+        int vertex = get(S);
+        G->discover[vertex] = time;
+        if(G->discover[vertex] != WHITE){
+            Visit(G, S, vertex, &time);
+        }
+    }
+}
 
 /*** Other operations ***/
+
+Graph transpose(Graph G){
+    Graph T = newGraph(getOrder(G));
+    List adj;
+    for(int x = 1; x <= getOrder(G); x++){
+        adj = G->neighbors[x];
+        if(length(adj) != 0){
+            moveFront(adj);
+            while(index(adj) != -1){
+                addArc(T, get(adj), x);
+                moveNext(adj);
+            }
+        }
+    }
+    return T;
+}
+
+Graph copyGraph(Graph G){
+    Graph A = newGraph(getOrder(G));
+    List adj;
+    for(int x = 1; x <= getOrder(G); x++){
+        adj = G->neighbors[x];
+        if(length(adj) != 0){
+            moveFront(adj);
+            while(index(adj) != -1){
+                addArc(A, x, get(adj));
+                moveNext(adj);
+            }
+        }
+    }
+    return A;
+}
+
 void printGraph(FILE* out, Graph G){
     if (out == NULL) {
         exit(1);
@@ -204,38 +277,5 @@ void printGraph(FILE* out, Graph G){
     }
 }
 
-void BFS(Graph G, int s){
-    if(G != NULL && s >= 1 && s <= G->order){
-      for(int i = 0; i <= getOrder(G);i++){
-        G->color[i] = WHITE;
-        G->distance[i] = INF;
-        G->parent[i] = NIL;
-      }
-        G->source = s;
-        G->distance[s] = 0;
-        G->color[s] = GRAY;
-        G->parent[s] = NIL;
-        List Q = newList();
-        List adj;
-        append(Q, s);
-        int current;
-        while(length(Q) != 0){
-            current = dequeue(Q);
-            adj = G->neighbors[current];
-            if(length(adj) != 0) {
-                moveFront(adj);
-                while (index(adj) != -1) {
-                    if (G->color[get(adj)] == WHITE) {
-                        append(Q, get(adj));
-                        G->parent[get(adj)] = current;
-                        G->color[get(adj)] = GRAY;
-                        G->distance[get(adj)] = G->distance[current] + 1;
-                    }
-                    moveNext(adj);
-                }
-            }
-            G->color[current] = BLACK;
-        }
-        freeList(&Q);
-    }
-}
+
+
