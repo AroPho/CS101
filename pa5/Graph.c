@@ -196,7 +196,7 @@ void addArc(Graph G, int u, int v){
     }*/
 }
 
-int Visit(Graph G, List L, int u, int *time){
+void Visit(Graph G, List L, int u, int *time){
     //printf("%d", *time);
     List adj = G->neighbors[u];
     int current;
