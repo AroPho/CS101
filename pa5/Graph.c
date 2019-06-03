@@ -89,6 +89,8 @@ int getSize(Graph G){
 int getSource(Graph G){
     if( G!= NULL){
         return  G->source;
+    }else{
+        return NIL;
     }
 }
 int getParent(Graph G, int u){
