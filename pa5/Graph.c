@@ -232,6 +232,9 @@ void DFS(Graph G, List S){
         }
         moveNext(S);
     }
+    for(int i = 0; i < getOrder(G); i++){
+        deleteBack(S);
+    }
 }
 
 /*** Other operations ***/
