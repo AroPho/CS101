@@ -228,6 +228,7 @@ void DFS(Graph G, List S){
         if(G->discover[vertex] != WHITE){
             Visit(G, S, vertex, &time);
         }
+        moveNext(S);
     }
 }
 
